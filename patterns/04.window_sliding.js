@@ -46,8 +46,7 @@ console.log(ans);
        max = 17 or 11
        max = 17
   
-       when i = 6 ;
-       temp = 
+       e.t.c
   
    
   */
