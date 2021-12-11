@@ -1,31 +1,27 @@
-// const say = () => {
-//   console.log("Helo i'm always calling true or false dosen't matter!");
-// };
+// ============================== Set data structure =====================================
 
-// let completed = false;
-// let pp = new Promise((resolve, reject) => {
-//   // pending
-//   setTimeout(() => {
-//     if (completed) {
-//       resolve("Hey i've learned about promises."); // resolve
-//     } else {
-//       reject("Sorry, don't learn yet!"); // reject
-//     }
-//   }, 1000);
-// })
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
-//   .finally(() => {
-//     say();
-//   });
+// set declaration
+const hashSet = new Set([
+  { name: "Shakil Babu" },
+  { name: "Torikus sadik raihan" },
+]);
 
-// let's discribe about set data-structrues
-let sds = new Set();
-sds.add("a");
-sds.add([1, 2, 3]);
-sds.add({ name: "shakil" });
-console.log(sds);
+// add item
+hashSet.add({ name: "Fahim morshed" });
+hashSet.add({ name: "Afifa rahman" });
+
+// delete item
+hashSet.forEach((item) => {
+  if (item.name === "Shakil Babu") {
+    hashSet.delete(item);
+  }
+});
+
+// has item
+for (let item of hashSet) {
+  if (hashSet.has(item.name)) {
+    console.log("She is female!");
+  }
+}
+
+console.log(hashSet);
