@@ -12,7 +12,6 @@ const maxSumOfn = (arr, n) => {
   for (let i = n; i < arr.length; i++) {
     temp = temp - arr[i - n] + arr[i];
     max = Math.max(max, temp);
-    console.log(temp + "=" + max);
   }
   return max;
 };

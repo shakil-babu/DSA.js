@@ -27,5 +27,5 @@ var countPrimes = function (n) {
   return ans.length;
 };
 
-let ans = countPrimes(10);
+let ans = countPrimes(25);
 console.log(ans);

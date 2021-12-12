@@ -1,29 +1,17 @@
-// var hashmap = new Map();
-// hashmap.set("name", { name: "shakil" });
-// hashmap.set("callme", () => console.log("Hello world!"));
-// hashmap.set("favlans", ["js", "c++", "c"]);
-// hashmap.set("isMarried", false);
-// // hashmap.forEach((item, index) => {
-// //   if (index === "isMarried") {
-// //     hashmap.set("isMarried", true);
-// //   }
-// // });
+// max subarray sub
+// const maxSubarraySum = (arr, len) => {
+//   if (arr.length < len) return false;
+//   let temp = 0;
+//   let max = 0;
+//   for (let i = 0; i < len; i++) {
+//     max += arr[i];
+//   }
 
-// // console.log(hashmap.get("isMarried"));
+//   temp = max;
+//   for (let i = len; i < arr.length; i++) {
+//     temp = max - arr[i - len] + arr[i];
+//     max = Math.max(max, temp);
+//   }
 
-// if (hashmap.has("isMarried")) {
-//   hashmap.set("isMarried", true);
-// }
-
-// let len = hashmap.size();
-// console.log(len);
-// console.log(hashmap);
-
-// // deleting item from hashmap
-// hashmap.delete("isMarried");
-// hashmap.clear();
-
-// function create using buil-in Function
-var body = "return 'Shakil Babu';";
-var say = new Function(body);
-console.log(say());
+//   return max;
+// };
