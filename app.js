@@ -37,3 +37,5 @@ var findPeakElement = function(nums) {
 };
 */
 // console.log(findKthPositive([1, 2, 3, 4], 2));
+
+function capitalizeFirst() {}
