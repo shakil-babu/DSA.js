@@ -1,43 +1,44 @@
-function List() {
-  this.listSize = 0;
-  this.pos = 0;
-  this.dataStore = []; // initializes an empty array to store list elements
-  //   this.clear = clear;
-  this.find = find;
-  //   this.insert = insert;
-  this.append = append;
-  //   this.remove = remove;
-  //   this.front = front;
-  //   this.end = end;
-  //   this.prev = prev;
-  //   this.next = next;
-  //   this.length = length;
-  //   this.currPos = currPos;
-  //   this.moveTo = moveTo;
-  //   this.getElement = getElement;
-  //   this.length = length;
-  //   this.contains = contains;
-}
-
-// add element
-function append(element) {
-  this.dataStore[this.listSize++] = element;
-}
-
-// find element
-function find(element) {
-  for (var i = 0; i < this.dataStore.length; i++) {
-    if (this.dataStore[i] === element) {
-      return i;
-    }
+class Student {
+  constructor(firstName, lastName, year) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.grade = year;
+    this.count = 0;
+    this.scores = [];
   }
-  return -1;
+
+  fullName() {
+    return `Full name is ${this.firstName} ${this.lastName}`;
+  }
+
+  markLate() {
+    this.count += 1;
+    if (this.count <= 3) {
+      return "Hey you're expired!";
+    }
+    return `Hey you late ${this.count} times!`;
+  }
+
+  addScore(item) {
+    this.scores.push(item);
+    return this.scores;
+  }
+
+  calculateTotalMark() {
+    let sum = this.scores.reduce((a, b) => a + b, 0);
+    return sum;
+  }
 }
 
-// call List
-let list = new List();
-list.append("shakil");
-list.append("babu");
+let shakil = new Student("Shakil", "Babu", "2021");
+let shakilFullName = shakil.fullName();
+shakil.markLate();
+shakil.markLate();
+console.log(shakil.markLate());
+// add score
+shakil.addScore(10);
+shakil.addScore(20);
+shakil.addScore(100);
 
-let i = list.find("babu");
-console.log(i);
+// call calculateTotalMark
+console.log(shakil.calculateTotalMark());
