@@ -1,22 +1,21 @@
-var findEvenNumbers = function (digits) {
-  let ans = [];
-  for (let i = 0; i < digits.length; i++) {
-    for (let j = 0; j < digits.length; j++) {
-      for (let k = 0; k < digits.length; k++) {
-        let sum;
-        if (i !== j && j !== k && k !== i) {
-          sum =
-            digits[i].toString() + digits[j].toString() + digits[k].toString();
-        }
-
-        if (parseInt(sum) % 2 === 0 && sum[0] !== "0") {
-          ans.push(parseInt(sum));
-        }
-      }
+function solve(nums, target) {
+  if (nums.length < 2) return 0;
+  nums.sort((a, b) => a - b);
+  let count = 0;
+  let left = 0,
+    right = nums.length - 1;
+  while (left < right) {
+    if (nums[left] + nums[right] === target) {
+      count++;
+      left++;
+      right--;
+    } else if (nums[left] + nums[right] > target) {
+      right--;
+    } else {
+      left++;
     }
   }
+  return count;
+}
 
-  return ans.sort((a, b) => a - b);
-};
-
-console.log(findEvenNumbers([2, 1, 3, 0]));
+console.log(solve([2, 2, 1], 3));
