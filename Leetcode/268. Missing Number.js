@@ -7,5 +7,5 @@ var missingNumber = function (nums) {
   return sum;
 };
 
-let ans = missingNumber([0, 3, 1]);
+let ans = missingNumber([2, 3, 1]);
 console.log(ans);

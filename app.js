@@ -1,16 +1,22 @@
-const solve = (s) => {
-  if (s === "") return 0;
-  let count = 1,
-    max = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === s[i + 1]) {
-      count++;
-    } else {
-      max = Math.max(count, max);
-      count = 1;
+var findEvenNumbers = function (digits) {
+  let ans = [];
+  for (let i = 0; i < digits.length; i++) {
+    for (let j = 0; j < digits.length; j++) {
+      for (let k = 0; k < digits.length; k++) {
+        let sum;
+        if (i !== j && j !== k && k !== i) {
+          sum =
+            digits[i].toString() + digits[j].toString() + digits[k].toString();
+        }
+
+        if (parseInt(sum) % 2 === 0 && sum[0] !== "0") {
+          ans.push(parseInt(sum));
+        }
+      }
     }
   }
-  return max;
+
+  return ans.sort((a, b) => a - b);
 };
 
-console.log(solve("aaabbb"));
+console.log(findEvenNumbers([2, 1, 3, 0]));
