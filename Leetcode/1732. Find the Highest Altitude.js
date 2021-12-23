@@ -11,5 +11,3 @@ var largestAltitude = function (gain) {
   if (sr[0] <= 0) return 0;
   return sr[0];
 };
-
-console.log(largestAltitude([-4, -3, -2, -1, 4, 3, 2]));
