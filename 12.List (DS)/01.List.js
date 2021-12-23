@@ -24,7 +24,7 @@ class List {
   remove(element) {
     var foundAt = this.find(element);
     if (foundAt > -1) {
-      this.data.splice(foundAt, i);
+      this.data.splice(foundAt, 1);
       --this.listSize;
       return true;
     }
