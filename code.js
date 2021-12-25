@@ -1,16 +1,32 @@
-var threeConsecutiveOdds = function (arr) {
-  let count = 0;
-  let temp = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 1) {
-      count++;
-      temp.push(count);
-    } else {
-      count = 0;
-    }
-  }
+// let maxSubArraySum = (arr) => {
+//   let current = 0;
+//   let maximum = Number.MIN_SAFE_INTEGER;
 
-  return temp.sort((a, b) => b - a)[0] === 3 ? true : false;
-};
+//   for (let i = 0; i < arr.length; i++) {
+//     current = Math.max(arr[i], current + arr[i]);
+//     if (current > maximum) {
+//       maximum = current;
+//     }
+//   }
 
-console.log(threeConsecutiveOdds([1, 2, 34, 3, 4, 5, 7, 23, 12]));
+//   return maximum;
+// };
+
+// let ans = maxSubArraySum([4, -8, -2, 8, -1, 3, 2, -6, 2]);
+// console.log(ans);
+
+// var maxAscendingSum = function (nums) {
+//   let c = 0,
+//     m = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     c += nums[i];
+//     if (nums[i] >= nums[i + 1] || !nums[i + 1]) {
+//       m = Math.max(c, m);
+//       c = 0;
+//     }
+//   }
+
+//   return m;
+// };
+// let ans = maxAscendingSum([10, 20, 30, 5, 10, 50]);
+// // 5  10 20  20  30 50

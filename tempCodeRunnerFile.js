@@ -1,9 +1,11 @@
 
-      count = 0;
+    while (a != 0) {
+      b++;
+      a--;
+    }
+  } else {
+    while (a != -1) {
+      a--;
+      b++;
     }
   }
-
-  return count;
-};
-
-console.log(threeConsecutiveOdds([1, 2, 34, 3, 4, 5, 7, 23, 12]));
