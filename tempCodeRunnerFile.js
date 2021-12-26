@@ -1,3 +1,2 @@
 
-  return count;
-};
+let ans = isSameAfterReversals(180
