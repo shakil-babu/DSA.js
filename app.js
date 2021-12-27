@@ -1,13 +1,11 @@
-// Node
 class Node {
-  constructor(val) {
+  constructor(val, next = null) {
     this.val = val;
-    this.next = null;
+    this.next = next;
   }
 }
 
-// singlyLinedList
-class SinglyLinkedList {
+class SinglyLinkedlist {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -16,13 +14,14 @@ class SinglyLinkedList {
 
   // push method
   push(val) {
-    let newNode = new Node(val);
+    let node = new Node(val);
     if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = node;
+      this.tail = node;
     }
-    this.tail.next = newNode;
-    this.tail = newNode;
+
+    this.tail.next = node;
+    this.tail = node;
     this.length++;
     return this;
   }
@@ -39,14 +38,22 @@ class SinglyLinkedList {
     this.tail = newTail;
     this.tail.next = null;
     this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
     return current;
   }
 }
 
-// create list
-let list = new SinglyLinkedList();
-list.push("Whats");
-list.push("up?");
-list.push("Coders");
+// called
+let ll = new SinglyLinkedlist();
+ll.push("First");
+ll.push("Second");
+ll.push("Third");
 
-console.log(list);
+console.log(ll.pop());
+console.log(ll.pop());
+console.log(ll.pop());
+console.log(ll);

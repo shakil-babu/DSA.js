@@ -14,5 +14,6 @@ function pop() {
     this.head = null;
     this.tail = null;
   }
+
   return current;
 }
