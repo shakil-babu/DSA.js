@@ -1,11 +1,11 @@
 class Node {
   constructor(val, next = null) {
-    this.value = val;
+    this.val = val;
     this.next = next;
   }
 }
 
-class LinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -28,19 +28,19 @@ class LinkedList {
   pop() {
     if (!this.head) return undefined;
     let current = this.head;
-    let newNode = current;
+    let newTail = current;
     while (current.next) {
-      newNode = current;
+      newTail = current;
       current = current.next;
     }
-
+    this.tail = current;
     this.tail.next = null;
-    this.tail = newNode;
     this.length--;
     if (this.length === 0) {
       this.head = null;
       this.tail = null;
     }
+
     return current;
   }
 
@@ -62,22 +62,46 @@ class LinkedList {
     if (!this.head) {
       this.head = node;
       this.tail = this.head;
-    } else {
-      node.next = this.head;
-      this.head = node;
     }
 
+    node.next = this.head;
+    this.head = node;
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index > 0 || index >= this.length) return null;
+    let count = 0;
+    let current = this.head;
+    while (count !== index) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
+
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
-// list
-let list = new LinkedList();
-list.push(100);
-list.push(200);
-list.push(300);
+// singly linked list
+let ll = new SinglyLinkedList();
+ll.push("second");
+ll.push("third");
+ll.push("fourth");
+ll.push("fifth");
+// unshift
+ll.unshift("First");
 
-// unshift method
-list.unshift(20);
-console.log(list);
+ll.set(0, "1");
+console.log(ll.get(0));
+
+// log singly linked list
+console.log(ll);
