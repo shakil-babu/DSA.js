@@ -96,7 +96,7 @@ class SinglyLinkedList {
     return this;
   }
 
-  // pop method : delete value from last
+  // pop method : delete node from last
   pop() {
     let currentNode = this.head;
     let nextNode = currentNode.next;
@@ -137,6 +137,21 @@ class SinglyLinkedList {
     }
     return currentNode;
   }
+
+  // reverse method : reverse linked list
+  reverse() {
+    let current = this.head;
+    let prev = null,
+      next = null;
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    return prev;
+  }
 }
 
 // singlyLinkedList
@@ -144,5 +159,5 @@ let ll = new SinglyLinkedList();
 ll.push(100);
 ll.push(200);
 ll.push(300);
-console.log(ll.pop());
+console.log(ll.reverse());
 console.log(ll);
