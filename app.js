@@ -117,3 +117,13 @@ list.push(999);
 
 console.log(list);
 console.log(list.reverse());
+
+var arraySign = function (nums) {
+  let mul = 1;
+  for (let i = 0; i < nums.length; i++) {
+    mul *= nums[i];
+  }
+
+  return signFunc(mul);
+};
+console.log(arraySign([-1, -2, -3, -4, 3, 2, 1]));
