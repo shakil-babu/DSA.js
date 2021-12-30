@@ -152,12 +152,37 @@ class SinglyLinkedList {
 
     return prev;
   }
+
+  deleteMiddle() {
+    let len = 0;
+    let cur = this.head;
+    while (cur) {
+      len++;
+      cur = cur.next;
+    }
+
+    let mid = Math.floor(len / 2);
+    let cn = this.head;
+    let count = 0;
+    while (cn) {
+      if (count === mid) {
+        cn.next = cn.next.next;
+        this.length--;
+      }
+      count++;
+      cn = cn.next;
+    }
+    return this;
+  }
 }
 
 // singlyLinkedList
 let ll = new SinglyLinkedList();
-ll.push(100);
-ll.push(200);
-ll.push(300);
-console.log(ll.reverse());
-console.log(ll);
+ll.push(1);
+ll.push(2);
+ll.push(3);
+ll.push(4);
+
+console.log(ll.deleteMiddle());
+
+// console.log(ll);

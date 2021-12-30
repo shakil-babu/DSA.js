@@ -1,3 +1,4 @@
+// create node
 class Node {
   constructor(val) {
     this.val = val;
@@ -6,6 +7,7 @@ class Node {
   }
 }
 
+// dubly linked list
 class DublyLinkedList {
   constructor() {
     this.head = null;
