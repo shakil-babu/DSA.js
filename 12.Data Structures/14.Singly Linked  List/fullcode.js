@@ -1,3 +1,4 @@
+// node
 class Node {
   constructor(val) {
     this.val = val;
@@ -5,12 +6,15 @@ class Node {
   }
 }
 
+// singly linked list
 class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
+
+  // push method
   push(val) {
     var newNode = new Node(val);
     if (!this.head) {
@@ -23,6 +27,8 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  // pop method
   pop() {
     if (!this.head) return undefined;
     var current = this.head;
@@ -41,6 +47,32 @@ class SinglyLinkedList {
     return current;
   }
 
+  // shift method
+  shift() {
+    if (!this.head) return undefined;
+    let current = this.head;
+    this.head = current.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return current;
+  }
+
+  // unshift method
+  unshift(val) {
+    var newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+
+  // get method
   get(index) {
     if (index < 0 || index >= this.length) return null;
     var counter = 0;
@@ -51,6 +83,8 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  // set method
   set(index, val) {
     var foundNode = this.get(index);
     if (foundNode) {
@@ -59,6 +93,8 @@ class SinglyLinkedList {
     }
     return false;
   }
+
+  // insert method
   insert(index, val) {
     if (index < 0 || index > this.length) return false;
     if (index === this.length) return !!this.push(val);
@@ -72,6 +108,8 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  // remove method
   remove(index) {
     if (index < 0 || index >= this.length) return undefined;
     if (index === 0) return this.shift();
@@ -82,6 +120,8 @@ class SinglyLinkedList {
     this.length--;
     return removed;
   }
+
+  // reverse method
   reverse() {
     var node = this.head;
     this.head = this.tail;
@@ -96,6 +136,8 @@ class SinglyLinkedList {
     }
     return this;
   }
+
+  // print method
   print() {
     var arr = [];
     var current = this.head;
@@ -107,13 +149,18 @@ class SinglyLinkedList {
   }
 }
 
+// declaration
 var list = new SinglyLinkedList();
 
+// chec push
 list.push(100);
 list.push(201);
 list.push(250);
 list.push(350);
 list.push(999);
 
+// list
 console.log(list);
+
+// list.reverse
 console.log(list.reverse());
