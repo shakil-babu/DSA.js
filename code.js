@@ -110,16 +110,16 @@ class SinglyLinkedList {
     return deleteNode;
   }
 
-  // shift method - add in first
-  shift(val) {
+  // unshift method - add in first
+  unshift(val) {
     let node = new Node(val, this.head);
     this.head = node;
     this.length++;
     return this;
   }
 
-  // unshift method - delete first node;
-  unshift() {
+  // shift method - delete first node;
+  shift() {
     let deleteNode = this.head;
     let nextNode = deleteNode.next;
     this.head = nextNode;
@@ -174,15 +174,24 @@ class SinglyLinkedList {
     }
     return this;
   }
+
+  // delete from end
+  removeNthFromEnd(n) {
+    let len = 0;
+    let current = this.head;
+    while (current.next) {
+      len++;
+      current = current.next;
+    }
+
+    return len;
+  }
 }
 
 // singlyLinkedList
 let ll = new SinglyLinkedList();
 ll.push(1);
-ll.push(2);
-ll.push(3);
-ll.push(4);
 
-console.log(ll.deleteMiddle());
+console.log(ll.removeNthFromEnd(1));
 
-// console.log(ll);
+console.log(ll);
