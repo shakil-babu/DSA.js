@@ -136,4 +136,17 @@
 
 */
 
-console.log(6 ^ 4);
+var xorOperation = function (n, start) {
+  let arr = [];
+  let ans = 0;
+  for (let i = 0; i < n; i++) {
+    let temp = start + 2 * i;
+    arr.push(temp);
+    ans = ans ^ arr[i];
+  }
+
+  return ans;
+};
+
+let ans = xorOperation(5, 0);
+console.log(ans);
