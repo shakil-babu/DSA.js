@@ -122,42 +122,18 @@
 // let ans = checkAlmostEquivalent("cccddabba", "babababab");
 // console.log(ans);
 
-var minimumDeletions = function (nums) {
-  if (nums.length === 1) return 1;
-  let max = Math.max(...nums),
-    min = Math.min(...nums);
-  let count = 0;
+// JavaScript bitwise operators
+/*
 
-  let minDiff = [],
-    maxDiff = [];
-  // find min and max from left
-  for (let i = 0; i < nums.length; i++) {
-    count++;
-    if (min === nums[i]) {
-      minDiff.push(count);
-    }
-    if (max === nums[i]) {
-      maxDiff.push(count);
-    }
-  }
+& - and -> if 1 & 1 = 1 otherwise 0;
+| - or -> if 1 is in it then 1 otherwise 0 ;
+~ - not -> 1 to 0, 0 to 1 ;
+>> - right shift -> 10 >> 2 = 10 / (2*2)
+<< - left shift -> 10 << 2 = 10 * (2*2);
+^ - xor -> when two bits are different then 1 other wise 0;
+>>> - zero-fill right shift -> it's divide by n/2 for input times;
 
-  // find min-max from right
-  let c = 0;
-  for (let i = nums.length; i > 0; i--) {
-    c++;
-    if (min === nums[i]) {
-      minDiff.push(c);
-    }
-    if (max === nums[i]) {
-      maxDiff.push(c);
-    }
-  }
 
-  let m = Math.min(...minDiff);
-  let mm = Math.min(...maxDiff);
+*/
 
-  return m + mm;
-};
-
-let ans = minimumDeletions([0, -4, 19, 1, 8, -2, -3, 5]);
-console.log(ans);
+console.log(6 ^ 4);
