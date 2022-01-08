@@ -1,152 +1,132 @@
-// class Node {
-//   constructor(val, next = null, prev = null) {
-//     this.val = val;
-//     this.next = next;
-//     this.prev = prev;
-//   }
-// }
+// BST practice
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
 
-// class DublyLinkedList {
-//   constructor() {
-//     this.head = null;
-//     this.tail = null;
-//     this.length = 0;
-//   }
+// Binary search tree
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
 
-//   // push method
-//   push(val) {
-//     let node = new Node(val);
-//     if (!this.head) {
-//       this.head = node;
-//       this.tail = this.head;
-//     } else {
-//       this.tail.next = node;
-//       node.prev = this.tail;
-//       this.tail = node;
-//     }
-//     this.length++;
-//     return this;
-//   }
+  // insert node
+  insert(val) {
+    let node = new Node(val);
+    if (this.root === null) {
+      this.root = node;
+    } else {
+      let current = this.root;
+      while (true) {
+        if (val === current.val) return undefined;
+        if (current.val < val) {
+          if (current.right === null) {
+            current.right = node;
+            return this;
+          } else {
+            current = current.right;
+          }
+        } else if (current.val > val) {
+          if (current.left === null) {
+            current.left = node;
+            return this;
+          } else {
+            current = current.left;
+          }
+        }
+      }
+    }
+  }
 
-//   // pop method
-//   pop() {
-//     if (!this.head) return undefined;
-//     let popedNode = this.tail;
-//     if (this.length === 1) {
-//       this.tail = null;
-//       this.head = null;
-//     } else {
-//       this.tail = popedNode.prev;
-//       this.tail.next = null;
-//       popedNode.prev = null;
-//     }
-//     this.length--;
-//     return popedNode;
-//   }
+  // find method
+  find(val) {
+    if (this.root === null) return undefined;
+    if (this.root.val === val) return this.root;
+    let found = false;
+    let current = this.root;
+    while (current && !found) {
+      if (current.val < val) {
+        current = current.right;
+      } else if (current.val > val) {
+        current = current.left;
+      } else {
+        found = true;
+      }
+    }
 
-//   // unshift
-//   unshift(val) {
-//     let node = new Node(val);
-//     if (!this.head) {
-//       this.head = node;
-//       this.tail = this.head;
-//     } else {
-//       this.head.prev = node;
-//       node.next = this.head;
-//       this.head = node;
-//     }
-//     this.length++;
-//     return this;
-//   }
-//   // shift method
-//   shift() {
-//     if (!this.head) return undefined;
-//     let shiftedNode = this.head;
-//     if (this.length === 1) {
-//       this.head = null;
-//       this.tail = null;
-//     } else {
-//       this.head = shiftedNode.next;
-//       this.head.prev = null;
-//       shiftedNode.next = null;
-//       // shiftedNode.prev = null;
-//     }
-//     this.length--;
-//     return shiftedNode;
-//   }
+    if (!found) return undefined;
+    return current;
+  }
 
-//   // get method
-//   get(index) {
-//     if (index < 0 || this.length < index) return null;
-//   }
-// }
+  // contains method
+  contains(val) {
+    if (this.root === null) return true;
+    let current = this.root,
+      found = false;
+    while (current && !found) {
+      if (current.val > val) {
+        current = current.left;
+      } else if (current.val < val) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
 
-// // calling list
-// let ll = new DublyLinkedList();
+    return false;
+  }
 
-// // push
-// ll.push(100);
-// ll.unshift("one");
-// ll.unshift("First");
+  // findMinimum val
+  findMinimum() {
+    if (this.root === null) return undefined;
+    let current = this.root;
+    let prev = current;
+    while (current) {
+      prev = current;
+      current = current.left;
+    }
+    return prev.val;
+  }
 
-// console.log(ll.shift());
-// // log
-// console.log(ll);
-// =================================================================
+  // findMaximum
+  findMaximum() {
+    if (this.root === null) return undefined;
+    let current = this.root;
+    let prev = current;
+    while (current) {
+      prev = current;
+      current = current.right;
+    }
 
-// let cmap = (arr) => {
-//   let obj = {};
-//   for (let item of arr) {
-//     obj[item] ? obj[item]++ : (obj[item] = 1);
-//   }
-//   return obj;
-// };
-// var checkAlmostEquivalent = function (word1, word2) {
-//   let a = cmap(word1);
-//   let b = cmap(word2);
+    return prev.val;
+  }
+}
 
-//   let res = [];
-//   for (let key in a) {
-//     for (let k in b) {
-//       if (key === k) {
-//         res.push(Math.abs(a[key] - b[k]));
-//       }
-//     }
-//   }
-
-//   if (res.length === 0) return false;
-//   return !!res.filter((item) => item >= 3);
-// };
-
-// ans
-// let ans = checkAlmostEquivalent("cccddabba", "babababab");
-// console.log(ans);
-
-// JavaScript bitwise operators
 /*
-
-& - and -> if 1 & 1 = 1 otherwise 0;
-| - or -> if 1 is in it then 1 otherwise 0 ;
-~ - not -> 1 to 0, 0 to 1 ;
->> - right shift -> 10 >> 2 = 10 / (2*2)
-<< - left shift -> 10 << 2 = 10 * (2*2);
-^ - xor -> when two bits are different then 1 other wise 0;
->>> - zero-fill right shift -> it's divide by n/2 for input times;
+                     10
+                    /  \
+                   8    15
+                  / \   / \
+                 5   9 13  20
 
 
 */
 
-var xorOperation = function (n, start) {
-  let arr = [];
-  let ans = 0;
-  for (let i = 0; i < n; i++) {
-    let temp = start + 2 * i;
-    arr.push(temp);
-    ans = ans ^ arr[i];
-  }
+let tree = new BinarySearchTree();
+// tree.insert(10);
+// tree.insert(8);
+// tree.insert(15);
+// tree.insert(5);
+// tree.insert(9);
+// tree.insert(13);
+// tree.insert(20);
 
-  return ans;
-};
-
-let ans = xorOperation(5, 0);
-console.log(ans);
+// find
+console.log(tree.find(10));
+// log
+console.log(tree.findMinimum());
+console.log(tree.findMaximum());
+console.log(tree);
