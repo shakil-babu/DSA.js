@@ -1,41 +1,41 @@
-// BST practice
+// Node
 class Node {
-  constructor(val) {
-    this.val = val;
+  constructor(value) {
+    this.value = value;
     this.left = null;
     this.right = null;
   }
 }
 
-// Binary search tree
+// BinarySearchTree
 class BinarySearchTree {
   constructor() {
     this.root = null;
   }
 
-  // insert node
+  //insert method
   insert(val) {
     let node = new Node(val);
     if (this.root === null) {
       this.root = node;
-    } else {
-      let current = this.root;
-      while (true) {
-        if (val === current.val) return undefined;
-        if (current.val < val) {
-          if (current.right === null) {
-            current.right = node;
-            return this;
-          } else {
-            current = current.right;
-          }
-        } else if (current.val > val) {
-          if (current.left === null) {
-            current.left = node;
-            return this;
-          } else {
-            current = current.left;
-          }
+    }
+
+    let current = this.root;
+    while (true) {
+      if (current.value === val) return undefined;
+      if (current.value > val) {
+        if (current.left === null) {
+          current.left = node;
+          return this;
+        } else {
+          current = current.left;
+        }
+      } else if (current.value < val) {
+        if (current.right === null) {
+          current.right = node;
+          return this;
+        } else {
+          current = current.right;
         }
       }
     }
@@ -44,14 +44,13 @@ class BinarySearchTree {
   // find method
   find(val) {
     if (this.root === null) return undefined;
-    if (this.root.val === val) return this.root;
-    let found = false;
     let current = this.root;
+    let found = false;
     while (current && !found) {
-      if (current.val < val) {
-        current = current.right;
-      } else if (current.val > val) {
+      if (current.value > val) {
         current = current.left;
+      } else if (current.value < val) {
+        current = current.right;
       } else {
         found = true;
       }
@@ -63,13 +62,13 @@ class BinarySearchTree {
 
   // contains method
   contains(val) {
-    if (this.root === null) return true;
-    let current = this.root,
-      found = false;
+    if (this.root === null) return undefined;
+    let current = this.root;
+    let found = false;
     while (current && !found) {
-      if (current.val > val) {
+      if (current.value < val) {
         current = current.left;
-      } else if (current.val < val) {
+      } else if (current.value > val) {
         current = current.right;
       } else {
         return true;
@@ -79,7 +78,7 @@ class BinarySearchTree {
     return false;
   }
 
-  // findMinimum val
+  // findMinimum
   findMinimum() {
     if (this.root === null) return undefined;
     let current = this.root;
@@ -88,7 +87,7 @@ class BinarySearchTree {
       prev = current;
       current = current.left;
     }
-    return prev.val;
+    return prev.value;
   }
 
   // findMaximum
@@ -100,8 +99,27 @@ class BinarySearchTree {
       prev = current;
       current = current.right;
     }
+    return prev.value;
+  }
 
-    return prev.val;
+  // BFS
+  BFS() {
+    let queue = [this.root];
+    let data = [];
+    while (queue.length) {
+      let cur = queue.shift();
+      data.push(cur.value);
+      if (cur.left !== null) queue.push(cur.left);
+      if (cur.right !== null) queue.push(cur.right);
+    }
+
+    return data;
+  }
+
+  // searchBST
+  getMinimumDifference(root) {
+    let arr = this.BFS(this).sort((a, b) => a - b);
+    return arr;
   }
 }
 
@@ -116,17 +134,16 @@ class BinarySearchTree {
 */
 
 let tree = new BinarySearchTree();
-// tree.insert(10);
-// tree.insert(8);
-// tree.insert(15);
-// tree.insert(5);
-// tree.insert(9);
-// tree.insert(13);
-// tree.insert(20);
+tree.insert(10);
+tree.insert(8);
+tree.insert(15);
+tree.insert(5);
+tree.insert(9);
+tree.insert(13);
+tree.insert(20);
 
 // find
-console.log(tree.find(10));
+console.log(tree.find(13));
 // log
-console.log(tree.findMinimum());
-console.log(tree.findMaximum());
+console.log(tree.getMinimumDifference());
 console.log(tree);

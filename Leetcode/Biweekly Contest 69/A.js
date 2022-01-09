@@ -10,6 +10,3 @@ var capitalizeTitle = function (title) {
   });
   return ans.join(" ");
 };
-
-let ans = capitalizeTitle("First leTTeR of EACH Word");
-console.log(ans);
