@@ -13,7 +13,7 @@ function find(val) {
       found = true;
     }
   }
-
+  
   if (!found) return undefined;
   return current;
 }
