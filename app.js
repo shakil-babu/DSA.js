@@ -1,7 +1,7 @@
 // Node
 class Node {
-  constructor(value) {
-    this.value = value;
+  constructor(val) {
+    this.val = val;
     this.left = null;
     this.right = null;
   }
@@ -22,15 +22,15 @@ class BinarySearchTree {
 
     let current = this.root;
     while (true) {
-      if (current.value === val) return undefined;
-      if (current.value > val) {
+      if (current.val === val) return undefined;
+      if (current.val > val) {
         if (current.left === null) {
           current.left = node;
           return this;
         } else {
           current = current.left;
         }
-      } else if (current.value < val) {
+      } else if (current.val < val) {
         if (current.right === null) {
           current.right = node;
           return this;
@@ -47,9 +47,9 @@ class BinarySearchTree {
     let current = this.root;
     let found = false;
     while (current && !found) {
-      if (current.value > val) {
+      if (current.val > val) {
         current = current.left;
-      } else if (current.value < val) {
+      } else if (current.val < val) {
         current = current.right;
       } else {
         found = true;
@@ -66,9 +66,9 @@ class BinarySearchTree {
     let current = this.root;
     let found = false;
     while (current && !found) {
-      if (current.value < val) {
+      if (current.val < val) {
         current = current.left;
-      } else if (current.value > val) {
+      } else if (current.val > val) {
         current = current.right;
       } else {
         return true;
@@ -87,7 +87,7 @@ class BinarySearchTree {
       prev = current;
       current = current.left;
     }
-    return prev.value;
+    return prev.val;
   }
 
   // findMaximum
@@ -99,7 +99,7 @@ class BinarySearchTree {
       prev = current;
       current = current.right;
     }
-    return prev.value;
+    return prev.val;
   }
 
   // BFS
@@ -108,7 +108,7 @@ class BinarySearchTree {
     let data = [];
     while (queue.length) {
       let cur = queue.shift();
-      data.push(cur.value);
+      data.push(cur.val);
       if (cur.left !== null) queue.push(cur.left);
       if (cur.right !== null) queue.push(cur.right);
     }
@@ -116,10 +116,30 @@ class BinarySearchTree {
     return data;
   }
 
-  // searchBST
-  getMinimumDifference(root) {
-    let arr = this.BFS(this).sort((a, b) => a - b);
-    return arr;
+  maxLevelSum() {
+    if (!this.root) return 0;
+    let result = [];
+    let queue = [this.root];
+    let i = 1;
+    while (queue.length) {
+      let len = queue.length;
+      let height = [];
+      for (let i = 0; i < len; i++) {
+        let cur = queue.shift();
+        height.push(cur.val);
+        if (cur.left) queue.push(cur.left);
+        if (cur.right) queue.push(cur.right);
+      }
+      result.push({ arr: height, ans: i });
+      i++;
+    }
+
+    let arr = [];
+    for (let i = 0; i < result.length; i++) {
+      let sum = result[i].arr.reduce((a, b) => a + b, 0);
+      arr.push({ sum: sum, ans: result[i].ans });
+    }
+    return arr.sort((a, b) => b.sum - a.sum)[0].ans;
   }
 }
 
@@ -143,7 +163,7 @@ tree.insert(13);
 tree.insert(20);
 
 // find
-console.log(tree.find(13));
+// console.log(tree.find(13));
 // log
-console.log(tree.getMinimumDifference());
+console.log(tree.maxLevelSum());
 console.log(tree);
