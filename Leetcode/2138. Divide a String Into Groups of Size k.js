@@ -19,6 +19,3 @@ var divideString = function (s, k, fill) {
 
   return final;
 };
-
-let ans = divideString("abcdefghij", 3, "x");
-console.log(ans);
