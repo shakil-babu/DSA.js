@@ -51,16 +51,3 @@ class MaxHeap {
     }
   }
 }
-
-/*
-
-*/
-
-// initialize
-let maxHeap = new MaxHeap();
-maxHeap.insert(29);
-maxHeap.insert(200);
-maxHeap.insert(199);
-maxHeap.insert(201);
-
-console.log(maxHeap);
