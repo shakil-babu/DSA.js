@@ -50,6 +50,9 @@ class MaxHeap {
       this._maxHepify(largest);
     }
   }
+
+  // extractmax
+  extractMax() {}
 }
 
 /*
