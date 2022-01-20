@@ -31,7 +31,7 @@ class MaxHeap {
     let largest = index;
 
     let len = this.values.length;
-    if (len > left && this.values[largest] < this.values(left)) {
+    if (len > left && this.values[largest] < this.values[left]) {
       largest = left;
     }
 
