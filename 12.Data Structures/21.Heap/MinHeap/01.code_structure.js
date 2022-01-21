@@ -1,3 +1,4 @@
+// code structure
 class MinHeap {
   constructor() {
     this.values = [];
