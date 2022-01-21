@@ -62,6 +62,11 @@ class MinHeap {
   _size() {
     return this.values.length;
   }
+
+  // isEmty method
+  _isEmty() {
+    return this.values.length === 0;
+  }
 }
 
 // initialization
