@@ -57,6 +57,11 @@ class MinHeap {
     this._minHepify();
     return min;
   }
+
+  // size method
+  _size() {
+    return this.values.length;
+  }
 }
 
 // initialization
