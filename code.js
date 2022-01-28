@@ -1,86 +1,10 @@
-class MinHeap {
-  constructor() {
-    this.values = [];
+var numberOfArrays = function (differences, lower, upper) {
+  if (!differences) return 0;
+  let arr = differences.map((item) => Math.abs(item));
+  let seq = [];
+  for (let i = lower; i <= upper; i++) {
+    seq.push(i);
   }
-
-  // insert method
-  insert(element) {
-    this.values.push(element);
-    this.bubbleUp();
-  }
-  // bubbleup funciton
-  bubbleUp() {
-    let idx = this.values.length - 1;
-    let element = this.values[idx];
-    while (idx > 0) {
-      let pidx = Math.floor((idx - 1) / 2);
-      let parent = this.values[pidx];
-      if (parent <= element) break;
-      this.values[idx] = parent;
-      this.values[pidx] = element;
-      idx = pidx;
-    }
-  }
-
-  // min hepify method
-  _minHepify(index = 0) {
-    let left = 2 * index + 1;
-    let right = 2 * index + 2;
-
-    let smallest = index;
-    let len = this.values.length;
-
-    // if len is gretor than left and left value less than smallest/root value
-    if (left < len && this.values[smallest] > this.values[left]) {
-      smallest = left;
-    }
-
-    // if len is gretor than right and right value less than smallest/root value
-    if (right < len && this.values[smallest] > this.values[right]) {
-      smallest = right;
-    }
-
-    if (smallest != index) {
-      let temp = this.values[index];
-      this.values[index] = this.values[smallest];
-      this.values[smallest] = temp;
-
-      // recursively  called
-      this._minHepify(smallest);
-    }
-  }
-
-  // _exactMin
-  _exactMin() {
-    let min = this.values[0];
-    this.values[0] = this.values.pop();
-    this._minHepify();
-    return min;
-  }
-
-  // size method
-  _size() {
-    return this.values.length;
-  }
-
-  // isEmty method
-  _isEmty() {
-    return this.values.length === 0;
-  }
-
-  // findMin
-  _findMin() {
-    return this.values[0];
-  }
-}
-
-// initialization
-let minHeap = new MinHeap();
-
-// insert
-minHeap.insert(10);
-minHeap.insert(100);
-minHeap.insert(2);
-
-// log minHeap
-console.log(minHeap);
+};
+let ans = numberOfArrays([1, -3, 4], 1, 6);
+console.log(ans);
