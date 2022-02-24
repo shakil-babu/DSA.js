@@ -1,22 +1,16 @@
 // Optimized bubble sort
 
 const optimizedBubbleSort = (arr) => {
-  let swapped;
   for (let i = 0; i < arr.length; i++) {
-    swapped = false;
-    for (let j = 0; j < arr.length; j++) {
-      console.log(`${arr} = ${arr[j]} - ${arr[j + 1]}`);
-
+    for (let j = 0; j < arr.length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-        swapped = true;
       }
     }
-    if (!swapped) break;
   }
   return arr;
 };
-let invock = optimizedBubbleSort([32, 1, 3, 34, 5]);
+let invock = optimizedBubbleSort([400, 200, 100, 300]);
 console.log(invock);
 
 /*
